@@ -1,0 +1,23 @@
+#format can be mase, molphy, clustal, fasta or phylip
+format mase
+
+#models can be day, jtt, rev, nucjc, aaJC
+model jtt
+
+#AA or DNA
+alphabet 20
+
+#un-comment if you want to use gamma in the learning process
+#gamma
+#alpha 0.3
+
+#un-comment if you only want to compute the branch lengths of a given tree
+#bblonly
+
+#input file
+seqfile seq.txt
+#output file
+outfile run.out
+
+#un-comment and add tree file for know tree (or starting point)
+#treefile tree.txt

@@ -1,0 +1,15 @@
+Full SEMPHY, gamma=0.742
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+ ============== final tree and likelihoods ================== 
+likelihood after semphy: -1037.97
+Best trees under semphy (gam)
+(((Rat:0.355144,(Cow:0.273323,Horse:0.931360):0.116299):0.001292,Human:0.069344):0.016700,Baboon:0.032468,Langur:0.083116);
+# The log likelihood of the tree is:
+-1037.97
+-1037.97
+# The tree
+(((Rat:0.355144,(Cow:0.273323,Horse:0.93136):0.116299):0.00129223,Human:0.0693439):0.0167004,Baboon:0.0324676,Langur:0.0831164);

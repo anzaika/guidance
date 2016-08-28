@@ -1,0 +1,4 @@
+isEqualTree.o isEqualTree.debug.o: isEqualTree.cpp ../../libs/phylogeny/tree.h \
+ ../../libs/phylogeny/definitions.h ../../libs/phylogeny/readTree.h \
+ ../../libs/phylogeny/errorMsg.h ../../libs/phylogeny/logFile.h \
+ ../../libs/phylogeny/treeUtil.h ../../libs/phylogeny/tree.h

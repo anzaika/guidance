@@ -1,0 +1,9 @@
+removeTaxa.o removeTaxa.debug.o: removeTaxa.cpp ../../libs/phylogeny/tree.h \
+ ../../libs/phylogeny/definitions.h ../../libs/phylogeny/readTree.h \
+ ../../libs/phylogeny/errorMsg.h ../../libs/phylogeny/logFile.h \
+ ../../libs/phylogeny/treeUtil.h ../../libs/phylogeny/tree.h \
+ ../../libs/phylogeny/someUtil.h ../../libs/phylogeny/alphabet.h \
+ ../../libs/phylogeny/phylipFormat.h \
+ ../../libs/phylogeny/sequenceContainer.h ../../libs/phylogeny/sequence.h \
+ ../../libs/phylogeny/mulAlphabet.h ../../libs/phylogeny/someUtil.h \
+ ../../libs/phylogeny/gainLossAlphabet.h

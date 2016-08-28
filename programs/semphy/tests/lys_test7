@@ -1,0 +1,4 @@
+#! /bin/tcsh -f
+
+echo "Full SEMPHY, no gamma"
+../semphy -H -s lys6.seq  -t lys6.tree --jtt

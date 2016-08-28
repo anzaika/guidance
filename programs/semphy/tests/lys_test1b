@@ -1,0 +1,4 @@
+#! /bin/tcsh -f
+
+echo "NJ and likelihood computation only, no gamma"
+../semphy -H -s lys6.seq  -S -n --jtt

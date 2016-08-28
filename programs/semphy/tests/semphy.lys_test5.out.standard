@@ -1,0 +1,16 @@
+likelihood computation after branch-length optimisation, gamma=0.742
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+argv = "../semphy" "-s" "lys6.seq" "-t" "lys6.tree" "-n" "--jtt" "-A0.742"
+# The likelihood of the tree
+-1037.96
+# The likelihood of the tree
+-1037.96
+# The log likelihood of the tree is:
+-1037.96
+-1037.96
+# The tree
+(((Langur:0.083206,Baboon:0.032530):0.016684,Human:0.069512):0.000999,Rat:0.355865,(Cow:0.273729,Horse:0.933000):0.116610);

@@ -1,0 +1,112 @@
+test constraints - with tree as both constraint tree and input tree
+input tree
+(turkey:0.029685,(duck:0.067725,((sooty_man:0.085726,dove_langur:0.024748)N4:0.050213,cow_s2:0.235180)N3:0.391251)N2:0.118513,chicken:0.027974)N1;
+
+
+constraint tree
+(turkey:0.029685,(duck:0.067725,((sooty_man:0.085726,dove_langur:0.024748):0.050213,cow_s2:0.23518):0.391251):0.118513,chicken:0.027974);
+
+
+fits constraints
+
+
+0 N1
+1 turkey
+2 N2
+3 duck
+4 N3
+5 N4
+6 sooty_man
+7 dove_langur
+8 cow_s2
+9 chicken
+
+
+constraint table
+0 0 1 1 2 3 3 3 2 0 
+0 0 1 1 2 3 3 3 2 0 
+1 1 0 0 1 2 2 2 1 1 
+1 1 0 0 1 2 2 2 1 1 
+2 2 1 1 0 1 1 1 0 2 
+3 3 2 2 1 0 0 0 1 3 
+3 3 2 2 1 0 0 0 1 3 
+3 3 2 2 1 0 0 0 1 3 
+2 2 1 1 0 1 1 1 0 2 
+0 0 1 1 2 3 3 3 2 0 
+
+
+test constraints - with different, matching trees
+input tree
+(turkey:0.029685,(duck:0.067725,((sooty_man:0.085726,dove_langur:0.024748)N4:0.050213,cow_s2:0.235180)N3:0.391251)N2:0.118513,chicken:0.027974)N1;
+
+
+constraint tree
+(duck:1e-06,(sooty_man:0.085726,dove_langur:0.024748):1e-06,cow_s2:1e-06,(chicken:1e-06,turkey:1e-06):1e-06);
+
+
+fits constraints
+
+
+0 N1
+1 turkey
+2 N2
+3 duck
+4 N3
+5 N4
+6 sooty_man
+7 dove_langur
+8 cow_s2
+9 chicken
+
+
+constraint table
+0 0 1 1 1 2 2 2 1 0 
+0 0 1 1 1 2 2 2 1 0 
+1 1 0 0 0 1 1 1 0 1 
+1 1 0 0 0 1 1 1 0 1 
+1 1 0 0 0 1 1 1 0 1 
+2 2 1 1 1 0 0 0 1 2 
+2 2 1 1 1 0 0 0 1 2 
+2 2 1 1 1 0 0 0 1 2 
+1 1 0 0 0 1 1 1 0 1 
+0 0 1 1 1 2 2 2 1 0 
+
+
+test constraints - with different, non matching trees
+input tree
+(turkey:0.029685,(duck:0.067725,((sooty_man:0.085726,dove_langur:0.024748)N4:0.050213,cow_s2:0.235180)N3:0.391251)N2:0.118513,chicken:0.027974)N1;
+
+
+constraint tree
+(duck:1e-06,(sooty_man:0.085726,dove_langur:0.024748):1e-06,chicken:1e-06,(cow_s2:1e-06,turkey:1e-06):1e-06);
+
+
+does not fit constraints:
+(cow_s2,turkey)
+
+
+0 N1
+1 turkey
+2 N2
+3 duck
+4 N3
+5 N4
+6 sooty_man
+7 dove_langur
+8 cow_s2
+9 chicken
+
+
+constraint table
+0 0 0 0 0 1 1 1 0 0 
+0 0 0 0 0 1 1 1 0 0 
+0 0 0 0 0 1 1 1 0 0 
+0 0 0 0 0 1 1 1 0 0 
+0 0 0 0 0 1 1 1 0 0 
+1 1 1 1 1 0 0 0 1 1 
+1 1 1 1 1 0 0 0 1 1 
+1 1 1 1 1 0 0 0 1 1 
+0 0 0 0 0 1 1 1 0 0 
+0 0 0 0 0 1 1 1 0 0 
+
+

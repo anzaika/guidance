@@ -1,0 +1,67 @@
+lys_test0.ctree
+(Langur,Human,Horse,Cow,Baboon,Rat);
+Running "../semphy -H -s lys6.seq  -t lys6.tree --jtt -c lys_test0.ctree -v5 -L"
+
+START OF LOG FILE
+Using uniform rates
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+argv = "../semphy" "-H" "-s" "lys6.seq" "-t" "lys6.tree" "--jtt" "-c" "lys_test0.ctree" "-v5" "-L"
+# The log likelihood of the tree is:
+-1044
+# The log likelihood of the tree is:
+-1044
+# The tree
+(((Langur:0.081000,Baboon:0.033000):0.021000,Human:0.064000):0.010000,Rat:0.288000,(Cow:0.240000,Horse:0.630000):0.106000);
+# The tree
+(((Langur:0.081,Baboon:0.033):0.021,Human:0.064):0.01,Rat:0.288,(Cow:0.24,Horse:0.63):0.106);
+END OF LOG FILE
+
+
+lys_test1-2.ctree
+(Langur,Horse,(Human:0.017860,Cow:0.279822):0.072072,Baboon,Rat);
+Running "../semphy -H -s lys6.seq  -t lys6.tree --jtt -c lys_test1-2.ctree -v5 -L"
+
+START OF LOG FILE
+Using uniform rates
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+Input tree does not fit constraints!
+(Cow,Human)
+
+Please enter a starting tree that fits the constraints
+
+Please enter a starting tree that fits the constraints
+semphy: errorMsg.cpp:39: static void errorMsg::reportError(const std::string&, int): Assertion `0' failed.
+Abort
+
+
+lys_test1.ctree
+((Human,Cow),Langur,(Rat:0.1,Baboon:0.2),Horse);
+
+Running "../semphy -H -s lys6.seq  -t lys6.tree --jtt -c lys_test1.ctree -v5 -L"
+
+START OF LOG FILE
+Using uniform rates
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+Input tree does not fit constraints!
+(Baboon,Horse,Langur,Rat)
+(Baboon,Rat)
+
+Please enter a starting tree that fits the constraints
+
+Please enter a starting tree that fits the constraints
+semphy: errorMsg.cpp:39: static void errorMsg::reportError(const std::string&, int): Assertion `0' failed.
+Abort
+
+

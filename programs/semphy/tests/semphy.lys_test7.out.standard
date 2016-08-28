@@ -1,0 +1,12 @@
+Full SEMPHY, no gamma
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+argv = "../semphy" "-H" "-s" "lys6.seq" "-t" "lys6.tree" "--jtt"
+# The log likelihood of the tree is:
+-1044
+-1044
+# The tree
+(((Langur:0.081000,Baboon:0.033000):0.021000,Human:0.064000):0.010000,Rat:0.288000,(Cow:0.240000,Horse:0.630000):0.106000);

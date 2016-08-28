@@ -1,0 +1,67 @@
+creating a bootstrap object from a file
+ first constractor
+5	size =2   0 1  | 2 3 4 5 
+1	size =3   0 1 2  | 3 4 5 
+1	size =2   0 1 2 3  | 4 5 
+2	size =2   0 1 2 5  | 3 4 
+1	size =2   0 1 3 5  | 2 4 
+1	size =2   0 1 4 5  | 2 3 
+4	size =3   0 1 5  | 2 3 4 
+
+
+ secound constractor
+5	size =2   0 1  | 2 3 4 5 
+1	size =3   0 1 2  | 3 4 5 
+1	size =2   0 1 2 3  | 4 5 
+2	size =2   0 1 2 5  | 3 4 
+1	size =2   0 1 3 5  | 2 4 
+1	size =2   0 1 4 5  | 2 3 
+4	size =3   0 1 5  | 2 3 4 
+
+
+geing whights from a tree
+ 0 1 0 0 0.8 0 0.4 0 0 0
+checkout the support of a tree
+((Baboon,Human)[1],(Rat,(Langur,Cow)[0.4])[0.8],Horse);
+
+remove the first tree from the list, and use is as bases for additional computation
+5	size =2   0 1  | 2 3 4 5 
+1	size =2   0 1 2 3  | 4 5 
+1	size =2   0 1 2 5  | 3 4 
+1	size =3   0 1 3  | 2 4 5 
+1	size =2   0 1 3 5  | 2 4 
+2	size =2   0 1 4 5  | 2 3 
+4	size =3   0 1 5  | 2 3 4 
+
+ 0 1 0 0 0.8 0 0.2 0 0 0
+checkout the support of the removed tree
+((Baboon,Human)[1],(Rat,(Langur,Cow)[0.2])[0.8],Horse);
+
+compatability 0.5 = Majority Rule
+
+from the consensus
+(Cow:0.300000,Langur:0.300000,Rat:0.300000,(Horse:0.300000,(Baboon:0.300000,Human:0.300000):0.000001):0.000001);
+with support
+(Cow,Langur,Rat,(Horse,(Baboon,Human)[1])[0.8]);
+
+compatability 0.1
+
+from the consensus
+(Cow:0.3,Langur:0.3,(Rat:0.3,(Horse:0.3,(Baboon:0.3,Human:0.3):1e-06):1e-06):1e-06);
+with support
+(Cow,Langur,(Rat,(Horse,(Baboon,Human)[1])[0.8])[0.4]);
+
+compatability 0.9
+
+from the consensus
+(Cow:0.3,Horse:0.3,Langur:0.3,Rat:0.3,(Baboon:0.3,Human:0.3):1e-06);
+with support
+(Cow,Horse,Langur,Rat,(Baboon,Human)[1]);
+
+strict consensus
+
+from the consensus
+(Cow:0.3,Horse:0.3,Langur:0.3,Rat:0.3,(Baboon:0.3,Human:0.3):1e-06);
+with support
+(Cow,Horse,Langur,Rat,(Baboon,Human)[1]);
+
