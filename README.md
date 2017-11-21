@@ -132,7 +132,7 @@ $ perl guidance.pl --seqFile protein.fas --msaProgram MAFFT --seqType aa --outDi
 ```
 ```bash
 $ perl guidance.pl --seqFile codingSeq.fas --msaProgram PRANK --seqType codon --outDir /somedir/codingSeq.guidance --genCode 2 --bootstraps 30
-#Will align the codon sequences in the fasta file "codingSeq.fas" using PRANK after translation using the vertebrate 
+# Will align the codon sequences in the fasta file "codingSeq.fas" using PRANK after translation using the vertebrate 
 # mitochondrial genetic code and output all results to the diretory "/somedir/codingSeq.guidance". Only 30 bootstrap iterations 
 # will be done instead of the default 100 (cut run-time by a factor of 3)
 ```
