@@ -1,4 +1,4 @@
-// $Id: tree.cpp 10611 2012-05-13 19:56:18Z cohenofi $
+// $Id: tree.cpp 13572 2015-11-24 15:21:53Z haim $
 #include "definitions.h"
 #include "tree.h"
 #include "treeUtil.h"
@@ -609,6 +609,7 @@ void tree::output(string treeOutFile, TREEformats fmt, bool withHTU ) const {
 }
 
 void tree::output(ostream& os, TREEformats fmt, bool withHTU) const {
+	os<<setiosflags(ios::fixed);
 	if (_root == NULL) {
 		LOG(1,<<" empty tree "); 
 		return; 
@@ -622,8 +623,6 @@ void tree::output(ostream& os, TREEformats fmt, bool withHTU) const {
 	else if (fmt == ANCESTORID) 
 		outputInAncestorIdTreeFormat(os,withHTU);
 	os<<endl;
-	//this returns the ostream properies to its previos ones (it was changed to ios::fixed in function outputInPhylipTreeFormat())
-	os<<setiosflags(ios::scientific);
 }
 
 void tree::outputInAncestorTreeFormat(ostream& treeOutStream, bool distances) const{
@@ -727,7 +726,7 @@ void tree::outputInPhylipTreeFormat(ostream& os, bool withHTU ) const {
 	  os<<"("<<_root->name()<<":0.0";
 	  if (_root->getComment().length()) os << "[&&NHX" << _root->getComment() <<"]";
 	  os<<",";
-	  os<<_root->getSon(0)->name()<<":" <<dec<<setiosflags(ios::fixed) <<_root->getSon(0)->dis2father();
+	  os<<_root->getSon(0)->name()<<":" <<dec<<_root->getSon(0)->dis2father();
 	  if (_root->getSon(0)->getComment().length()) os << "[&&NHX" << _root->getSon(0)->getComment() <<"]";
 	  os <<")"<<endl;
 		return;
@@ -795,7 +794,7 @@ void tree::outputInPamlTreeFormat(ostream& os, bool withHTU ) const {
 	  os<<"("<<_root->name()<<":0.0";
 	  if (_root->getComment().length()) os << "[&&NHX" << _root->getComment() <<"]";
 	  os<<",";
-	  os<<_root->getSon(0)->name()<<":" <<dec<<setiosflags(ios::fixed) <<_root->getSon(0)->dis2father();
+	  os<<_root->getSon(0)->name()<<":" <<dec<<_root->getSon(0)->dis2father();
 	  if (_root->getSon(0)->getComment().length()) os << "[&&NHX" << _root->getSon(0)->getComment() <<"]";
 	  os <<")"<<endl;
 		return;
@@ -838,7 +837,7 @@ int tree::print_from(nodeP from_node, ostream& os, bool withHTU ) const {
 		if (withHTU==true) 
 			os<<from_node->name();
 	}
-	os<<":"<<dec<<setiosflags(ios::fixed) <<from_node->dis2father();
+	os<<":"<<dec<<from_node->dis2father();
 	if (from_node->getComment().length()) os << "[&&NHX" << from_node->getComment() <<"]";
 
 	return 0;

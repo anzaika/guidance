@@ -1,4 +1,4 @@
-// $Id: someUtil.cpp 11665 2013-07-17 11:19:12Z cohenofi $
+// $Id: someUtil.cpp 15479 2016-10-10 16:25:21Z elilevy $
 
 #include "someUtil.h"
 #include "errorMsg.h"
@@ -223,14 +223,21 @@ bool isCharInString(const string& stringToCheck, const char charToCheck) {
 	return false;
 }
 
-string double2string(const double x, const int lenght){
+string double2string(const double x, const int lenght, bool round){
 	
 	// first getting the integer part:
-	//Itay: fixing bug regarding negative floats 
 	double x_abs = fabs(x);
 	int theIntegerPart = static_cast<int>(x_abs);
 	double theRemainingPart = fabs(x_abs-theIntegerPart);
 	int integerRepresentingTheRemainingPart = static_cast<int>(theRemainingPart*pow(10.0,lenght));
+	if (round) {
+		integerRepresentingTheRemainingPart = static_cast<int>(theRemainingPart*pow(10.0,lenght)+0.5);
+		if (integerRepresentingTheRemainingPart == pow(10.0,lenght)) {
+			integerRepresentingTheRemainingPart = 0;
+			theIntegerPart++;
+		}
+	}
+
 	string part1 = int2string(theIntegerPart);
 	string part2 = int2string(integerRepresentingTheRemainingPart);
 	while (part2.length()<lenght){
@@ -350,7 +357,7 @@ MDOUBLE string2double(const string& inString) {
 
 bool checkThatFileExist(const string& fileName) {
 	ifstream file1(fileName.c_str());
-	if (file1==NULL) return false;
+	if (!file1.good()) return false;
 	file1.close();
 	return true;
 }
@@ -398,7 +405,7 @@ string* searchStringInFile(const string& string2find,
 						   const string& inFileName) {
 	ifstream f;
 	f.open(inFileName.c_str());
-	if (f==NULL) {
+	if (!f.good()) {
 		string tmp = "Unable to open file name: "+inFileName+" in function searchStringInFile"; 
 		errorMsg::reportError(tmp);
 	}
@@ -425,7 +432,7 @@ string* searchStringInFile(const string& string2find,
 						   const string& inFileName) {// return the string that is AFTER the string to search.
 	ifstream f;
 	f.open(inFileName.c_str());
-	if (f==NULL) {
+	if (!f.good()) {
 		string tmp = "Unable to open file name: "+inFileName+" in function searchStringInFile"; 
 		errorMsg::reportError(tmp);
 	}
@@ -449,7 +456,7 @@ string* searchStringInFile(const string& string2find,
 bool doesWordExistInFile(const string& string2find,const string& inFileName) {
 	ifstream f;
 	f.open(inFileName.c_str());
-	if (f==NULL) {
+	if (!f.good()) {
 		string tmp = "Unable to open file name: "+inFileName+" in function searchStringInFile"; 
 		errorMsg::reportError(tmp);
 	}

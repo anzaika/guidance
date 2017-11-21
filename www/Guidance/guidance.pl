@@ -1,4 +1,3 @@
-
 #!/usr/bin/perl -w
 
 use strict;
@@ -463,9 +462,18 @@ if ((-e "$VARS{WorkingDir}$VARS{Alignment_File}") and (-s "$VARS{WorkingDir}$VAR
 		  print LOG "extract_seq_from_MSA($VARS{WorkingDir}$VARS{Alignment_File},$VARS{WorkingDir}$VARS{SeqsFile_Codons})\n";
 		  extract_seq_from_MSA("$VARS{WorkingDir}$VARS{Alignment_File}","$VARS{WorkingDir}$VARS{SeqsFile_Codons}");
 	  }
-	  print LOG "Guidance::name2codeFastaFrom1($VARS{WorkingDir}$VARS{Alignment_File}, $VARS{WorkingDir}$VARS{code_fileName_aln}, $VARS{WorkingDir}$VARS{Alignment_File}.WithCodesName);\n";
-	  my @ans=Guidance::name2codeFastaFrom1("$VARS{WorkingDir}$VARS{Alignment_File}", "$VARS{WorkingDir}$VARS{code_fileName_aln}", "$VARS{WorkingDir}$VARS{Alignment_File}.WithCodesName");
-	  unless ($ans[0] eq "ok") {exit_on_error("sys_error","Guidance::name2codeFastaFrom1: ".join (" ",@ans));}
+	  if (($FORM{PROGRAM} eq "GUIDANCE2")||($FORM{PROGRAM} eq "GUIDANCE3_HOT"))
+	  {
+		  print LOG "Guidance::name2codeFastaFrom1($VARS{WorkingDir}$VARS{Alignment_File}, $VARS{WorkingDir}$VARS{code_fileName_aln}, $VARS{WorkingDir}$VARS{Alignment_File}.WithCodesName,0,seqNum);\n";
+		  my @ans=Guidance::name2codeFastaFrom1("$VARS{WorkingDir}$VARS{Alignment_File}", "$VARS{WorkingDir}$VARS{code_fileName_aln}", "$VARS{WorkingDir}$VARS{Alignment_File}.WithCodesName",0,"seqNum");
+		  unless ($ans[0] eq "ok") {exit_on_error("sys_error","Guidance::name2codeFastaFrom1: ".join (" ",@ans));}
+	  }
+	  else
+	  {
+		  print LOG "Guidance::name2codeFastaFrom1($VARS{WorkingDir}$VARS{Alignment_File}, $VARS{WorkingDir}$VARS{code_fileName_aln}, $VARS{WorkingDir}$VARS{Alignment_File}.WithCodesName);\n";
+		  my @ans=Guidance::name2codeFastaFrom1("$VARS{WorkingDir}$VARS{Alignment_File}", "$VARS{WorkingDir}$VARS{code_fileName_aln}", "$VARS{WorkingDir}$VARS{Alignment_File}.WithCodesName");
+		  unless ($ans[0] eq "ok") {exit_on_error("sys_error","Guidance::name2codeFastaFrom1: ".join (" ",@ans));}
+	  }
 	  if (($FORM{Seq_Type} eq "Nucleotides")) # ?? ($FORM{Seq_Type} eq "Codons") ??
 	  {
 		  if ($FORM{MSA_Program} eq "MAFFT")
@@ -1081,7 +1089,13 @@ sub run_Guidance2
 	$VARS{Scoring_Alignments_Dir}=$VARS{GUIDANCE2_MSAs_Dir};
 	
 	# INIT
-	if (($FORM{MSA_Program} eq "MAFFT") or ($FORM{MSA_Program} eq "MAFFT_LINSI")) {$VARS{HoT_MSA_Program}="MFT";$VARS{HoT_MSA_Program_path}=$mafft_prog;}
+	if (($FORM{MSA_Program} eq "MAFFT") or ($FORM{MSA_Program} eq "MAFFT_LINSI")) 
+	{
+		$VARS{HoT_MSA_Program}="MFT";
+		$VARS{HoT_MSA_Program_path}=$mafft_prog;
+		my $check_mafft_profile=`which $VARS{HoT_MSA_Program_path}-profile`;
+		if ($check_mafft_profile=~/Command not found/){die "It seems that $VARS{HoT_MSA_Program_path}-profile is not properly installed or found in PATH variable. Please fix that and/or provide GUIDANCE with the full path to mafft installation using the --mafft argument\n";}
+	}
 	if ($FORM{MSA_Program} eq "MUSCLE") {exit_on_error('user_error', "GUIDANCE2 currently does not support MUSCLE, please run GUIDANCE<br>");}
 	if ($FORM{MSA_Program} eq "PAGAN") {exit_on_error('user_error', "GUIDANCE2 currently does not support PAGAN, please run GUIDANCE<br>");}
 	elsif ($FORM{MSA_Program} eq "CLUSTALW") {$VARS{HoT_MSA_Program}="CLW";$VARS{HoT_MSA_Program_path}=$clustalw_prog;}
@@ -1429,7 +1443,13 @@ sub run_HoT
 #cp ./output_dir_cos_msa_method/b0#*.fasta ./COS_MSA/
 	
 	
-	if (($FORM{MSA_Program} eq "MAFFT") or ($FORM{MSA_Program} eq "MAFFT_LINSI")) {$VARS{HoT_MSA_Program}="MFT";$VARS{HoT_MSA_Program_path}=$mafft_prog;}
+	if (($FORM{MSA_Program} eq "MAFFT") or ($FORM{MSA_Program} eq "MAFFT_LINSI")) 
+	{
+		$VARS{HoT_MSA_Program}="MFT";
+		$VARS{HoT_MSA_Program_path}=$mafft_prog;
+		my $check_mafft_profile=`which $VARS{HoT_MSA_Program_path}-profile`;
+		if ($check_mafft_profile=~/Command not found/){die "It seems that $VARS{HoT_MSA_Program_path}-profile is not properly installed or found in PATH variable. Please fix that and/or provide GUIDANCE with the full path to mafft installation using the --mafft argument\n";}
+	}
 	if ($FORM{MSA_Program} eq "MUSCLE") {exit_on_error('user_error', "HoT currently does not support MUSCLE, please run GUIDANCE<br>");}
 	if ($FORM{MSA_Program} eq "PAGAN") {exit_on_error('user_error', "HoT currently does not support PAGAN, please run GUIDANCE<br>");}
 	elsif ($FORM{MSA_Program} eq "CLUSTALW") {$VARS{HoT_MSA_Program}="CLW";$VARS{HoT_MSA_Program_path}=$clustalw_prog;}
@@ -2558,26 +2578,31 @@ sub store_data{
 }
 
 sub extract_seq_from_MSA{
-	my $inMSA=shift;
-	my $SeqFile=shift;
-	
-	open (IN,$inMSA) || exit_on_error('sys_error', "extract_seq_from_MSA:Can't open '$inMSA': $!");
-	open (OUT,">$SeqFile") || exit_on_error('sys_error', "extract_seq_from_MSA: Can't open seqs File: '$SeqFile': $!");
-	while (my $line=<IN>)
-	{
-		if ($line!~/>/)
-		{
-			chomp ($line);
-			$line=~s/-//g;
-			print OUT $line;
-		}
-		else
-		{
-			print OUT "\n$line";
-		}
-	}
-	close (OUT);
-	close (IN);
+        my $inMSA=shift;
+        my $SeqFile=shift;
+        my $line_num=0;
+
+        open (IN,$inMSA) || exit_on_error('sys_error', "extract_seq_from_MSA:Can't open '$inMSA': $!");
+        open (OUT,">$SeqFile") || exit_on_error('sys_error', "extract_seq_from_MSA: Can't open seqs File: '$SeqFile': $!");
+        my $seqNum=1;
+        while (my $line=<IN>)
+        {
+                $line_num++;
+                if ($line!~/>/)
+                {
+                        chomp ($line);
+                        $line=~s/-//g;
+                        print OUT $line;
+                }
+                else
+                {
+                        if ($seqNum>1){print OUT "\n$line";}
+                        else {print OUT "$line";}
+                        $seqNum++;
+                }
+        }
+        close (OUT);
+        close (IN);
 }
 
 sub names_according_CoS{
