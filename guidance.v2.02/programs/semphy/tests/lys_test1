@@ -1,0 +1,4 @@
+#! /bin/tcsh -f
+
+echo "likelihood computation only, no gamma"
+../semphy -H -s lys6.seq  -t lys6.tree -L --jtt

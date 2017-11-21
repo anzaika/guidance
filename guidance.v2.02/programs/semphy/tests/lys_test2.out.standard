@@ -1,0 +1,11 @@
+likelihood computation only, gamma=0.742
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+# The log likelihood of the tree is:
+-1040.29
+-1040.29
+# The tree
+(((Langur:0.081000,Baboon:0.033000):0.021000,Human:0.064000):0.010000,Rat:0.288000,(Cow:0.240000,Horse:0.630000):0.106000);

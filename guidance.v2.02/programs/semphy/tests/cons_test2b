@@ -1,0 +1,15 @@
+#! /bin/tcsh -f
+
+
+echo "SEMPHY with Constraints from NJ tree"
+
+foreach ct (lys_test*.ctree)
+    echo $ct
+    cat $ct
+    echo ""
+    echo 'Running "../semphy -H -s lys6.seq  --jtt -c '$ct' -v5 -S"'
+    echo ""
+    ../semphy -H -s lys6.seq  --jtt -c $ct -v5 -S
+    echo ""
+    echo ""
+end

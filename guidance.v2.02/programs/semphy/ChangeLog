@@ -1,0 +1,10 @@
+2005-06-27  matan ninio  <mn-eved@cs.ninio.org>
+
+	* lib/givenRatesMLDistance.cpp (Module): added by matan for eyal
+
+	* lib/givenRatesMLDistance.h (Module): added by matan for eyal
+
+2003-10-29  Matan Ninio  <matan@ninio.org>
+
+	* amino.h (Module): fixed dos/unix newline problem
+

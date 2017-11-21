@@ -1,0 +1,4 @@
+#! /bin/tcsh -f
+
+echo "likelihood computation after branch-length optimisation, no gamma"
+../semphy -H -s lys6.seq  -t lys6.tree -n  --jtt

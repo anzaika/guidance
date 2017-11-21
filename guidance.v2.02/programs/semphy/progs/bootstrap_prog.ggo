@@ -1,0 +1,15 @@
+purpose "compute bootstrap values and consensus trees from a list of trees"
+package "bootstrap"
+version "1.0.a1"
+
+# test default values
+
+#files 
+option  "treesList"		t    "filename of list of input trees"		string					yes
+option  "reftree"		r    "Refremce Tree file name"			string					no
+option  "outputfile"		o    "Output tree file"     			string 	default="-"			no
+option  "Logfile"		l    "Log file output name"			string 	default="-"			no
+#options
+option  "verbose"  		v    "Log report level (verbose)"		int    	default="0"			no
+option  "ConsensusLevel"       	c    "use only branches with sport above this"	float 	default="0.5"			no
+option  "noBranchLen"   b    "Do not output branch lengths in output tree" flag  off

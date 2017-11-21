@@ -1,0 +1,116 @@
+SEMPHY with Constraints from NJ tree
+lys_test0.ctree
+(Langur,Human,Horse,Cow,Baboon,Rat);
+Running "../semphy -H -s lys6.seq  --jtt -c lys_test0.ctree -v5 -S"
+
+START OF LOG FILE
+Using uniform rates
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+argv = "../semphy" "-H" "-s" "lys6.seq" "--jtt" "-c" "lys_test0.ctree" "-v5" "-S"
+((Rat:0.215194,Horse:0.596352):0.080080,(Langur:0.043244,Cow:0.246389):0.032130,(Baboon:0.046553,Human:0.070670):0.019372);
+semphy iteration: 0
+starting semhy step by bbl...starting likelihood = -1035.58
+ENTERTING COMPUTE DISTANCES() 
+likelihood after semphy step is: -1035.56
+sep best trees under semphy (gam)
+(((Rat:0.198658,Horse:0.642019):0.120586,(Baboon:0.0354224,Human:0.0806353):0.00033191):0.0745093,Cow:0.280119,Langur:0.0165603);
+ ============== final tree and likelihoods ================== 
+ ============== final tree and likelihoods ================== 
+likelihood after semphy: -1035.55
+likelihood after semphy: -1035.55
+Best trees under semphy (gam)
+Best trees under semphy (gam)
+(((Rat:0.198658,Horse:0.642019):0.12091,(Baboon:0.0354224,Human:0.0806353):0.00021324):0.0747911,Cow:0.280119,Langur:0.0163959);
+(((Rat:0.198658,Horse:0.642019):0.12091,(Baboon:0.0354224,Human:0.0806353):0.00021324):0.0747911,Cow:0.280119,Langur:0.0163959);
+# The log likelihood of the tree is:
+-1035.55
+# The log likelihood of the tree is:
+-1035.55
+# The tree
+(((Rat:0.198658,Horse:0.642019):0.12091,(Baboon:0.0354224,Human:0.0806353):0.00021324):0.0747911,Cow:0.280119,Langur:0.0163959);
+# The tree
+(((Rat:0.198658,Horse:0.642019):0.12091,(Baboon:0.0354224,Human:0.0806353):0.00021324):0.0747911,Cow:0.280119,Langur:0.0163959);
+END OF LOG FILE
+
+
+lys_test1-2.ctree
+(Langur,Horse,(Human:0.017860,Cow:0.279822):0.072072,Baboon,Rat);
+Running "../semphy -H -s lys6.seq  --jtt -c lys_test1-2.ctree -v5 -S"
+
+START OF LOG FILE
+Using uniform rates
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+argv = "../semphy" "-H" "-s" "lys6.seq" "--jtt" "-c" "lys_test1-2.ctree" "-v5" "-S"
+((Rat:0.215194,Horse:0.596352):0.091870,(Langur:0.058604,Baboon:0.056213):0.021419,(Human:0.106581,Cow:0.279780):0.000001);
+semphy iteration: 0
+starting semhy step by bbl...starting likelihood = -1045.54
+ENTERTING COMPUTE DISTANCES() 
+likelihood after semphy step is: -1045.53
+sep best trees under semphy (gam)
+(((Rat:0.207307,Horse:0.634157):0.111306,(Human:0.0701106,Cow:0.338204):3.55735e-07):0.0148566,Baboon:0.034639,Langur:0.0805224);
+ ============== final tree and likelihoods ================== 
+ ============== final tree and likelihoods ================== 
+likelihood after semphy: -1045.53
+likelihood after semphy: -1045.53
+Best trees under semphy (gam)
+Best trees under semphy (gam)
+(((Rat:0.206828,Horse:0.634157):0.111995,(Human:0.0701902,Cow:0.338204):3.11217e-07):0.0147773,Baboon:0.034639,Langur:0.0805224);
+(((Rat:0.206828,Horse:0.634157):0.111995,(Human:0.0701902,Cow:0.338204):3.11217e-07):0.0147773,Baboon:0.034639,Langur:0.0805224);
+# The log likelihood of the tree is:
+-1045.53
+# The log likelihood of the tree is:
+-1045.53
+# The tree
+(((Rat:0.206828,Horse:0.634157):0.111995,(Human:0.0701902,Cow:0.338204):3.11217e-07):0.0147773,Baboon:0.034639,Langur:0.0805224);
+# The tree
+(((Rat:0.206828,Horse:0.634157):0.111995,(Human:0.0701902,Cow:0.338204):3.11217e-07):0.0147773,Baboon:0.034639,Langur:0.0805224);
+END OF LOG FILE
+
+
+lys_test1.ctree
+((Human,Cow),Langur,(Rat:0.1,Baboon:0.2),Horse);
+
+Running "../semphy -H -s lys6.seq  --jtt -c lys_test1.ctree -v5 -S"
+
+START OF LOG FILE
+Using uniform rates
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+argv = "../semphy" "-H" "-s" "lys6.seq" "--jtt" "-c" "lys_test1.ctree" "-v5" "-S"
+(Human:0.118423,Cow:0.267938,(Langur:0.081893,(Horse:0.641069,(Baboon:0.064562,Rat:0.263557):0.000001):0.048071):0.000001);
+semphy iteration: 0
+starting semhy step by bbl...starting likelihood = -1051.06
+ENTERTING COMPUTE DISTANCES() 
+likelihood after semphy step is: -1051.06
+sep best trees under semphy (gam)
+((Human:0.0839591,Cow:0.326818):5.48758e-07,(Horse:0.751377,(Baboon:0.0231869,Rat:0.302137):1.01951e-06):0.0211979,Langur:0.0773689);
+ ============== final tree and likelihoods ================== 
+ ============== final tree and likelihoods ================== 
+likelihood after semphy: -1051.06
+likelihood after semphy: -1051.06
+Best trees under semphy (gam)
+Best trees under semphy (gam)
+((Human:0.0839591,Cow:0.326818):5.19667e-07,(Horse:0.751377,(Baboon:0.0231869,Rat:0.302137):1.18015e-06):0.0210958,Langur:0.077495);
+((Human:0.0839591,Cow:0.326818):5.19667e-07,(Horse:0.751377,(Baboon:0.0231869,Rat:0.302137):1.18015e-06):0.0210958,Langur:0.077495);
+# The log likelihood of the tree is:
+-1051.06
+# The log likelihood of the tree is:
+-1051.06
+# The tree
+((Human:0.0839591,Cow:0.326818):5.19667e-07,(Horse:0.751377,(Baboon:0.0231869,Rat:0.302137):1.18015e-06):0.0210958,Langur:0.077495);
+# The tree
+((Human:0.0839591,Cow:0.326818):5.19667e-07,(Horse:0.751377,(Baboon:0.0231869,Rat:0.302137):1.18015e-06):0.0210958,Langur:0.077495);
+END OF LOG FILE
+
+

@@ -1,0 +1,80 @@
+# $RCSfile$ $Revision: 1932 $ $Date: 2007-04-10 12:05:04 +0300 (Tue, 10 Apr 2007) $
+purpose "structural EM based Phylogeny"
+package "semphy"
+version "1.0.b1"
+
+
+section "Algorithm Options"
+
+# algorithm options
+section "Which algorithm to run"
+#defgroup "Run Options" groupdesc="Which algorithm to run"
+
+option  "SEMPHY"       	S    "Do SEMPHY step"				flag	off
+option  "bbl"       	n    "Only optimize branch length"	 	flag	off
+option  "likelihood"	L    "Compute likelihood for fixed tree" 	flag	off
+option  "PerPosLike"	P    "Compute likelihood per position for a fixed tree" 	flag	off
+option  "PerPosPosterior"	B    "Compute likelihood per position and Bayesian posterior" 	flag	off
+#option  "NJ"		J    "compute NJ tree only"		 	flag	off
+
+option       "rate"		R    "optimize rate of gene"			flag	off
+
+
+#section "Other Algorithm Options"
+#option  "exact"			e    "Compute exact counts" 			flag 	off
+#option  "maxDistance"		x    "'infinity' distance for sequence pairs"	float	default="2.0"			no
+section "Advanced Algorithm Options"
+#option  "dont-use-NJ"		N    "Do not Use NJ to break stars in treeRearrange"	flag	hidden on
+option  "max-semphy-iter"	M    "Max number of SEM iterations"		int	default="100"		hidden	no
+option  "epsilonLikelihoodImprovement4iterNJ"  -       "The threshold for optimization of likelihood of the tree, in iterative distance-based tree reconstruction"              float   default="0.01"    hidden no
+option  "epsilonLikelihoodImprovement4pairwiseDistance"  -       "The threshold for optimization of likelihood of a pair of sequences, in pairwise distance optimization"              float   default="0.0001"    hidden no
+option  "epsilonLikelihoodImprovement4alphaOptimiz"  -       "The threshold for optimization of likelihood of the tree, in alpha optimization (also used for Nu optimization when using --ssrv)"              float   default="0.01"    hidden no
+option  "epsilonLikelihoodImprovement4BBL"  -       "The threshold for optimization of likelihood of the tree, in branch-lengths optimization"              float   default="0.01"    hidden no
+#option  "ADVBBLEpsilinLikeToll"		-    "BBL and BBL LL tol"	float	default="0.05" hidden no
+option  "maxNumOfBBLIter"	-	"Number of BBL iterations in BBL+ALPHA optimization" int default="10"  hidden no
+#option  "ADVNoPost"		-	"do not use posterior"		flag	hidden off 
+option  "consurf"		-	"version for use in consurf"		flag	hidden off 
+
+
+
+defgroup "DistanceTableEstimationMethod"  groupdesc="Method used for computing the distance table for the initial tree NJ construction"
+section "Non Iterative methods"
+#section "XXXXXX Pairwise distance estimation methods"
+
+groupoption  "NJ"		        J    "'classic' Neighbor Joining (same as homogeneousRates)"			group="DistanceTableEstimationMethod" 
+groupoption  "homogeneousRatesDTME"	-	 "homogeneous rates MLE distance"		group="DistanceTableEstimationMethod" 
+groupoption  "pairwiseGammaDTME"	-	"Gamma-ASRV with alpha optimized for each pair. (must give either --alpha or --optimizeAlpha)"	group="DistanceTableEstimationMethod" 
+
+section "Iterative distance-based tree reconstruction, with distance estimation methods that utilize side information from the tree of the previous iteration"
+groupoption  "commonAlphaDTME"	-	"Side information is the alpha parameter.(must use --optimizeAlpha; may give an initial alpha value in --alpha)"		       group="DistanceTableEstimationMethod" 
+groupoption  "rate4siteDTME"	-	"Side information is the ML rate for each site"	       group="DistanceTableEstimationMethod"
+groupoption  "posteriorDTME"	-	"Side information is the posterior probabilities of the rates at each site. (must use --optimizeAlpha; may give an initial alpha value in --alpha)"	group="DistanceTableEstimationMethod"
+
+
+# we need to change the iterative common-alpha (and the pairwise) to use exact gamma (using cmdline2ExactGammaStochasticProcess, which uses alphaTrivialAccelerator)
+#groupoption  "asrvExactGammaDTME" -	"Exact Gamma-ASRV, given alpha (must give alpha parameter)"	group="DistanceTableEstimationMethod" 
+
+
+
+
+section "Bootstrap"
+option  "BPrepeats"		-    "Use bootstrap and set number of repeats"	int					no
+#option  "BPfile"		-    "Use bootstrap and read the weights from a file"	string	typestr="FILENAME"	no
+option  "BPconsensus"		-    "Use bootstrap and compute a Consensus tree"	int	no
+option  "BPonUserTree"		-    "Use compute support for user provided tree"	flag	off
+
+
+#option  "paramFile"		f    "Parameter file name"			string					no
+#option  "cin"			I    "Get input sequence file from cin"		flag	off
+
+# annealing:
+#option  "anneal"		A    "Do anneal step" 				flag 	off
+#option  "ratchet"		R    "Do Ratchet step"				flag 	off
+#option  "start-temp"		H    "Starting temp"				float					no
+#option  "cooling-factor"	c    "Variance decay factor for anneal noise"	float	default="1.1"			no
+#option  "final-temp"		C    "Final temperature of anneal noise"  	float	default="0.1"			no
+#option	 "adversarial"		-    "Use Adversarial Re-weighting"		flag	off
+#option  "learning-rate"   	L    "learning rate for Adversary"		float	default="1.0"			no
+#option  "Orig-dumping"    	D    "Dumping to the original weights"		float	default="0.5"			no
+#option  "prev-dumping"    	X    "Dumping to the previous weights"		float	default="0.5"			no
+

@@ -1,0 +1,4 @@
+#! /bin/tcsh -f
+
+echo "full semphy, with gamma and alpha optimiziation"
+../semphy -s lys6.seq  -t lys6.tree  --jtt -A0.5 -O -S

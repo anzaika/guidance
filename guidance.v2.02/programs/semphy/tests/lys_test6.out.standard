@@ -1,0 +1,19 @@
+likelihood computation only, with gamma and alpha optimiziation
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+# Best alpha after branch length optimiziation
+1.41967
+# The likelihood of the tree
+-1035.86
+# Best alpha after branch length optimiziation
+1.41967
+# The likelihood of the tree
+-1035.86
+# The log likelihood of the tree is:
+-1035.86
+-1035.86
+# The tree
+(((Langur:0.083589,Baboon:0.032831):0.018610,Human:0.068043):0.003896,Rat:0.334485,(Cow:0.262984,Horse:0.803845):0.113608);

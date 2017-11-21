@@ -1,0 +1,74 @@
+NJ with Constraints
+lys_test0.ctree
+(Langur,Human,Horse,Cow,Baboon,Rat);
+Running "../semphy -H -s lys6.seq   --jtt -c lys_test0.ctree  -v5 -J"
+
+START OF LOG FILE
+Using uniform rates
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+argv = "../semphy" "-H" "-s" "lys6.seq" "--jtt" "-c" "lys_test0.ctree" "-v5" "-J"
+((Rat:0.215194,Horse:0.596352):0.080080,(Langur:0.043244,Cow:0.246389):0.032130,(Baboon:0.046553,Human:0.070670):0.019372);
+# The log likelihood of the tree is:
+-1039.34
+# The log likelihood of the tree is:
+-1039.34
+# The tree
+((Rat:0.215194,Horse:0.596352):0.0800803,(Langur:0.0432439,Cow:0.246389):0.0321299,(Baboon:0.0465533,Human:0.07067):0.0193717);
+# The tree
+((Rat:0.215194,Horse:0.596352):0.0800803,(Langur:0.0432439,Cow:0.246389):0.0321299,(Baboon:0.0465533,Human:0.07067):0.0193717);
+END OF LOG FILE
+
+
+lys_test1-2.ctree
+(Langur,Horse,(Human:0.017860,Cow:0.279822):0.072072,Baboon,Rat);
+Running "../semphy -H -s lys6.seq   --jtt -c lys_test1-2.ctree  -v5 -J"
+
+START OF LOG FILE
+Using uniform rates
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+argv = "../semphy" "-H" "-s" "lys6.seq" "--jtt" "-c" "lys_test1-2.ctree" "-v5" "-J"
+((Rat:0.215194,Horse:0.596352):0.091870,(Langur:0.058604,Baboon:0.056213):0.021419,(Human:0.106581,Cow:0.279780):0.000001);
+# The log likelihood of the tree is:
+-1047.99
+# The log likelihood of the tree is:
+-1047.99
+# The tree
+((Rat:0.215194,Horse:0.596352):0.0918705,(Langur:0.0586043,Baboon:0.0562129):0.0214194,(Human:0.106581,Cow:0.27978):1e-06);
+# The tree
+((Rat:0.215194,Horse:0.596352):0.0918705,(Langur:0.0586043,Baboon:0.0562129):0.0214194,(Human:0.106581,Cow:0.27978):1e-06);
+END OF LOG FILE
+
+
+lys_test1.ctree
+((Human,Cow),Langur,(Rat:0.1,Baboon:0.2),Horse);
+
+Running "../semphy -H -s lys6.seq   --jtt -c lys_test1.ctree  -v5 -J"
+
+START OF LOG FILE
+Using uniform rates
+#################################################################
+# SEMPHY: A Structural EM Algorithm for Phylogenetic Inference  #
+# for information, please send email to semphy@cs.huji.ac.il    #
+#################################################################
+
+argv = "../semphy" "-H" "-s" "lys6.seq" "--jtt" "-c" "lys_test1.ctree" "-v5" "-J"
+(Human:0.118423,Cow:0.267938,(Langur:0.081893,(Horse:0.641069,(Baboon:0.064562,Rat:0.263557):0.000001):0.048071):0.000001);
+# The log likelihood of the tree is:
+-1055.47
+# The log likelihood of the tree is:
+-1055.47
+# The tree
+(Human:0.118423,Cow:0.267938,(Langur:0.0818932,(Horse:0.641069,(Baboon:0.0645623,Rat:0.263557):1e-06):0.048071):1e-06);
+# The tree
+(Human:0.118423,Cow:0.267938,(Langur:0.0818932,(Horse:0.641069,(Baboon:0.0645623,Rat:0.263557):1e-06):0.048071):1e-06);
+END OF LOG FILE
+
+
