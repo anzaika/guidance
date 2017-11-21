@@ -1,9 +1,0 @@
-#! /bin/tcsh -f
-
-
-
-foreach ct (lys_test*.ctree)
-    echo $ct
-    cat $ct
-    ../semphy -H -s lys6.seq   --jtt -t lys6.tree.constraints -c $ct -v5 -S -n
-end
