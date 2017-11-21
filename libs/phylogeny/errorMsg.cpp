@@ -1,4 +1,4 @@
-// $Id: errorMsg.cpp 6066 2009-04-14 19:11:10Z itaymay $
+// $Id: errorMsg.cpp 15479 2016-10-10 16:25:21Z elilevy $
 
 // version 1.01
 // last modified 1 Jan 2004
@@ -16,7 +16,7 @@ void errorMsg::reportError(const vector<string>& textToPrint, const int exitCode
 	for (int i =0 ; i < textToPrint.size() ; ++i) {
 		LOG(1,<<textToPrint[i]<<endl);
 		cerr<<textToPrint[i]<<endl;
-		if (_errorOut != NULL && *_errorOut != cerr)  {
+		if (_errorOut != NULL && _errorOut != &cerr)  {
 			(*_errorOut)<<textToPrint[i]<<endl;
 		}
 	}
@@ -31,7 +31,7 @@ void errorMsg::reportError(const vector<string>& textToPrint, const int exitCode
 void errorMsg::reportError(const string& textToPrint, const int exitCode) {
 	LOG(1,<<endl<<textToPrint<<endl);
 	cerr<<endl<<textToPrint<<endl;
-	if (_errorOut != NULL && *_errorOut != cerr)  {
+	if (_errorOut != NULL && _errorOut != &cerr)  {
 		(*_errorOut)<<textToPrint<<endl;
 	}
 	if (errno!=0){

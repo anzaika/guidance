@@ -322,7 +322,7 @@ sub met_init_MAF {
 
 sub make_guide_tree_MAF {
 	my ($infile,$treefile)=@_;
-	my $cmdstr="(time -p $metver --treeout $infile  | tr  '[:lower:]'  '[:upper:]' | sed 's/>SEQ/>seq/' >hot_H$extstr[0] 2>&1 ) 2>&1 ";
+	my $cmdstr="($metver --treeout $infile  | tr  '[:lower:]'  '[:upper:]' | sed 's/>SEQ/>seq/' >hot_H$extstr[0] 2>&1 ) 2>&1 ";
 	my $rc=my_cmd($cmdstr);# produces input.fasta.tree
 	if ($rc=~/err/i) {
     log_print(0,2,"ERROR: $my_name $$ : mafft error:\n$cmdstr\n---\n$rc\n---\n");
@@ -350,7 +350,7 @@ sub make_guide_tree_MAF {
 
 sub align_seq_MAF {
 	my ($infile,$treefile,$outfile)=@_;
-	my $cmdstr="(time -p $metver --treein $treefile $infile  | tr  '[:lower:]'  '[:upper:]' | sed 's/>SEQ/>seq/' >$outfile 2>&1 ) 2>&1";
+	my $cmdstr="($metver --treein $treefile $infile  | tr  '[:lower:]'  '[:upper:]' | sed 's/>SEQ/>seq/' >$outfile 2>&1 ) 2>&1";
 	my $rc=my_cmd($cmdstr);
 	if ($rc=~/err/i) {
     log_print(0,2,"ERROR: $my_name $$ : mafft error:\n$cmdstr\n---\n$rc\n---\n");
@@ -376,7 +376,7 @@ sub align_prof_MAF {
 #	$cmdstr="(time -p mafft-profile $pfile2 $pfile1 2>&1 >$ofile  )2>&1" if (substr($met,2,1) eq '1'); 
 #	print "$met \n$cmdstr\n";
 #	exit;
-	$cmdstr="(time -p $msa_program_path-profile $pfile2 $pfile1  | tr  '[:lower:]'  '[:upper:]' | sed 's/>SEQ/>seq/' 2>&1 >$ofile  )2>&1"; 
+	$cmdstr="($msa_program_path-profile $pfile2 $pfile1  | tr  '[:lower:]'  '[:upper:]' | sed 's/>SEQ/>seq/' 2>&1 >$ofile  )2>&1"; 
 	my $rc=my_cmd($cmdstr);
 	if ($rc=~/err/i) {
 		log_print(0,2,"ERROR: $my_name $$ : mafft error:\n$cmdstr\n---\n$rc\n---\n");
@@ -424,9 +424,9 @@ sub met_init_PRK {
 
 sub make_guide_tree_PRK {
 	my ($infile,$treefile)=@_;
-	my $cmdstr="(time -p $metver -d=$infile -o=prank_gdt 2>&1) 2>&1;mv prank_gdt.2.fas hot_H$extstr[0];mv prank_gdt.2.dnd $treefile";
+	my $cmdstr="($metver -d=$infile -o=prank_gdt 2>&1) 2>&1;mv prank_gdt.2.fas hot_H$extstr[0];mv prank_gdt.2.dnd $treefile";
 	if ($prkver==1) {
-		$cmdstr="(time -p $metver -d=$infile -o=prank_gdt -showtree 2>&1) 2>&1;mv prank_gdt.2.fas hot_H$extstr[0];mv prank_gdt.2.dnd $treefile";
+		$cmdstr="($metver -d=$infile -o=prank_gdt -showtree 2>&1) 2>&1;mv prank_gdt.2.fas hot_H$extstr[0];mv prank_gdt.2.dnd $treefile";
 	} 
 	my $rc=my_cmd($cmdstr);# produces input.fasta.tree
 	if ($rc=~/err/i) {
@@ -448,9 +448,9 @@ sub make_guide_tree_PRK {
 
 sub align_seq_PRK {
 	my ($infile,$treefile,$outfile)=@_;
-	my $cmdstr="(time -p $metver -d=$infile -t=$treefile -o=prank_$outfile -notree 2>&1) 2>&1;mv prank_$outfile.1.fas $outfile"; # HERE was 2.fas
+	my $cmdstr="($metver -d=$infile -t=$treefile -o=prank_$outfile -notree 2>&1) 2>&1;mv prank_$outfile.1.fas $outfile"; # HERE was 2.fas
 	if ($prkver==1) {
-		$cmdstr="(time -p $metver -d=$infile -t=$treefile -o=prank_$outfile 2>&1) 2>&1;mv prank_$outfile.2.fas $outfile";
+		$cmdstr="($metver -d=$infile -t=$treefile -o=prank_$outfile 2>&1) 2>&1;mv prank_$outfile.2.fas $outfile";
 	}
 	my $rc=my_cmd($cmdstr);
 	if ($rc=~/err/i) {
@@ -479,9 +479,9 @@ sub align_prof_PRK {
     log_print(0,2,"ERROR: $my_name $$ : prank input sed error:\n$cmdstr\n---\n$rc\n---\n");
 	  cleanup(1);
 	}
-	my $cmdstr="(time -p $metver  -partaligned -d=prank_$ofile\_inp -t=$tfile3 -o=prank_$ofile -notree 2>&1) 2>&1;mv prank_$ofile.0.fas $ofile";
+	my $cmdstr="($metver  -partaligned -d=prank_$ofile\_inp -t=$tfile3 -o=prank_$ofile -notree 2>&1) 2>&1;mv prank_$ofile.0.fas $ofile";
 	if ($prkver==1) {
-		$cmdstr="(time -p $metver  -partaligned -d=prank_$ofile\_inp -t=$tfile3 -o=prank_$ofile 2>&1) 2>&1;mv prank_$ofile.0.fas $ofile";
+		$cmdstr="($metver  -partaligned -d=prank_$ofile\_inp -t=$tfile3 -o=prank_$ofile 2>&1) 2>&1;mv prank_$ofile.0.fas $ofile";
 	}
 	my $rc=my_cmd($cmdstr);
 	if ($rc=~/err/i) {
@@ -530,7 +530,7 @@ sub met_init_CW2 {
 
 sub make_guide_tree_CW2 {
 	my ($infile,$treefile)=@_;
-	$cmdstr="(time -p $metver -infile=$infile -newtree=$treefile 2>&1) 2>&1";
+	$cmdstr="($metver -infile=$infile -newtree=$treefile 2>&1) 2>&1";
 	my $rc=my_cmd($cmdstr);
 	if ($rc=~/err/i) {
     log_print(0,2,"ERROR: $my_name $$ : clustalw2 error:\n$cmdstr\n---\n$rc\n---\n");
@@ -547,7 +547,7 @@ sub make_guide_tree_CW2 {
 
 sub align_seq_CW2 {
 	my ($infile,$treefile,$outfile)=@_;
-	$cmdstr="(time -p $metver -infile=$infile -outfile=$outfile -output=fasta -outorder=input -usetree=$treefile 2>&1) 2>&1";
+	$cmdstr="($metver -infile=$infile -outfile=$outfile -output=fasta -outorder=input -usetree=$treefile 2>&1) 2>&1";
 	my $rc=my_cmd($cmdstr);
 	if ($rc=~/err/i) {
     log_print(0,2,"ERROR: $my_name $$ : clustalw2 error:\n$cmdstr\n---\n$rc\n---\n");
@@ -565,7 +565,7 @@ sub align_seq_CW2 {
 sub align_prof_CW2 {
 	my ($pfile1,$pfile2,$tfile1,$tfile2,$tfile3,$ofile)=@_;
 	my $cmdstr=($tfile1 eq '') ? '' : "-usetree1=$tfile1";# terminal/internal branch
-	$cmdstr="(time -p $metver -profile -profile1=$pfile1 -profile2=$pfile2 $cmdstr -usetree2=$tfile2 -output=fasta -outfile=$ofile 2>&1) 2>&1";
+	$cmdstr="($metver -profile -profile1=$pfile1 -profile2=$pfile2 $cmdstr -usetree2=$tfile2 -output=fasta -outfile=$ofile 2>&1) 2>&1";
 	my $rc=my_cmd($cmdstr);
 	if ($rc=~/err/i) {
     log_print(0,2,"ERROR: $my_name $$ : clustalw2 error:\n$cmdstr\n---\n$rc\n---\n");

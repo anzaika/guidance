@@ -255,7 +255,6 @@
     <ClCompile Include="doubleRep.cpp" />
     <ClCompile Include="findRateOfGene.cpp" />
     <ClCompile Include="GLaguer.cpp" />
-    <ClCompile Include="khTest.cpp" />
     <ClCompile Include="logRep.cpp" />
     <ClCompile Include="Parameters.cpp" />
     <ClCompile Include="searchStatus.cpp" />
@@ -436,7 +435,6 @@
     <ClInclude Include="doubleRep.h" />
     <ClInclude Include="findRateOfGene.h" />
     <ClInclude Include="GLaguer.h" />
-    <ClInclude Include="khTest.h" />
     <ClInclude Include="logRep.h" />
     <ClInclude Include="Parameters.h" />
     <ClInclude Include="searchStatus.h" />

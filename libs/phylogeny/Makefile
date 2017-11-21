@@ -1,5 +1,5 @@
 #! /usr/local/bin/gmake
-# $Id: Makefile 11759 2013-09-24 13:45:40Z elilevy $
+# $Id: Makefile 15479 2016-10-10 16:25:21Z elilevy $
 # makfile for yaep5
 
 
@@ -88,8 +88,8 @@ GENGETOPT = gengetopt
 
 #LDFLAGS=  
 
-CPPFLAGS=  -O3 -Wall -Wno-sign-compare -I. -DLOG -ftemplate-depth-32
-CPPFLAGSDEBUG= -g -Wall -Wno-sign-compare -I. -DLOG -ftemplate-depth-32 -DVERBOS
+CPPFLAGS=  -O3 -Wall -Wno-sign-compare -I. -DLOG
+CPPFLAGSDEBUG= -g -Wall -Wno-sign-compare -I. -DLOG -DVERBOS
 #CPPFLAGSDOU=  $(CPPFLAGS) 
 #-pg
 
@@ -108,19 +108,25 @@ all: lib $(EXEC)
 test: all tests
 	+cd tests; make -k test
 
-#ifdef DOUBLEREP
-#CPPFLAGS+= -DLOGREP
-#CPPFLAGSDEBUG += -DLOGREP
-#LDFLAGSDEBUG +=  -DLOGREP
-#endif
-
 ifdef DOUBLEREP
-CPPFLAGS+= -DDOUBLEREP
-CPPFLAGSDEBUG += -DDOUBLEREP
-LDFLAGSDEBUG +=  -DDOUBLEREP
+CPPFLAGS+= -DLOGREP
+CPPFLAGSDEBUG += -DLOGREP
+LDFLAGSDEBUG +=  -DLOGREP
 endif
 
-debug: CPPFLAGS = -g -Wall -Wno-sign-compare -I. -DLOG -ftemplate-depth-32
+#ifdef DOUBLEREP
+#CPPFLAGS+= -DDOUBLEREP
+#CPPFLAGSDEBUG += -DDOUBLEREP
+#LDFLAGSDEBUG +=  -DDOUBLEREP
+#endif
+
+
+
+
+
+
+
+debug: CPPFLAGS = -g -Wall -Wno-sign-compare -I. -DLOG
 debug:  $(DEBUGLIB)
 pl:
 	@echo "lib  ="$(LIB)
@@ -220,10 +226,10 @@ $(DEBUGLIB): $(Libsources:.cpp=.debug.o) $(LibCsources:.c=.debug.o)
 	ar rv $@ $?
 	ranlib $@
 
-#doubleRep: LOGREP=t
-#doubleRep: CPPFLAGS+= -DLOGREP
-doubleRep: DOUBLEREP=t
-doubleRep: CPPFLAGS+= -DDOUBLEREP
+doubleRep: LOGREP=t
+doubleRep: CPPFLAGS+= -DLOGREP
+#doubleRep: DOUBLEREP=t
+#doubleRep: CPPFLAGS+= -DDOUBLEREP
 doubleRep: $(DOUBLEREPLIB)
 
 %.doubleRep.o: %.c

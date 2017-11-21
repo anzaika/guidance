@@ -1,4 +1,4 @@
-// $Id: someUtil.h 10689 2012-05-30 16:27:22Z cohenofi $
+// $Id: someUtil.h 11905 2013-12-26 10:12:03Z itaymay $
 
 #ifndef ___SOME_UTIL_H
 #define ___SOME_UTIL_H
@@ -74,7 +74,7 @@ void printTime(ostream& out);
 
 // TEXT UTILITIES
 string int2string(const int i);
-string double2string(const double x, int const howManyDigitsAfterTheDot=5);
+string double2string(const double x, int const howManyDigitsAfterTheDot=5, bool round = false);
 MDOUBLE string2double(const string& inString);
 bool allowCharSet(const string& allowableChars, const string& string2check);
 bool isCharInString(const string& stringToCheck, const char charToCheck);
