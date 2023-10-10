@@ -53,8 +53,8 @@ GENGETOPT = gengetopt
 
 .SECONDARY: $(addsuffix _cmdline.c,$(EXEC)) $(addsuffix _cmdline.h,$(EXEC)) $(addsuffix .ggo,$(EXEC))
 
-CPPFLAGS=     -O3 -Wall -Wno-sign-compare -I. -I$(libDir) -DLOG -ftemplate-depth-32
-CPPFLAGSDEBUG= -g -Wall -Wno-sign-compare -I. -I$(libDir) -DLOG -ftemplate-depth-32
+CPPFLAGS=     -O3 -Wall -Wno-sign-compare -I. -I$(libDir) -DLOG
+CPPFLAGSDEBUG= -g -Wall -Wno-sign-compare -I. -I$(libDir) -DLOG
 
 LDFLAGSDEBUG := $(LDFLAGS) -g 
 # sources
@@ -196,7 +196,7 @@ pl:
 	echo $(LIB)
 
 
-%.debug: CPPFLAGS = -g -Wall -Wno-sign-compare -I. -I../.. -DLOG -ftemplate-depth-25
+%.debug: CPPFLAGS = -g -Wall -Wno-sign-compare -I. -I../.. -DLOG
 
 %.debug: %.o 
 
